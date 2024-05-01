@@ -24,10 +24,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
+ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+     return $request->user();
     
-// });
+ });
+
+Route::post('useradmin/daftar', [UseradminController::class,'store']);
+Route::post('useradmin/login', [UseradminController::class,'login']);
 //ini yang ada abilities
 /*
 Route::middleware('auth:sanctum')->group(function () {
