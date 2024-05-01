@@ -130,7 +130,7 @@ Route::prefix('status')->group(function(){
     Route::delete('/delete/{id_status}', [StatusController::class,'destroy']);
 });
 //DONE
-Route::prefix('kategori')->group(function(){
+Route::prefix('/api/kategori')->group(function(){
     Route::get('/', [KategoriController::class,'index']);
     Route::post('/daftar', [KategoriController::class,'store']);
     Route::get('/detail/{id_kategori}', [KategoriController::class,'show']);
