@@ -56,7 +56,7 @@ class StatusController extends Controller
             ], Response::HTTP_NOT_ACCEPTABLE);
         } else {
             $validated = $validasi->validated();
-            // Hashing password
+            
             try {
                 $createdStatus = Status::create($validated);
                 DB::commit();
