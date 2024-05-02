@@ -118,6 +118,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
 //Route::middleware('auth:sanctum')->group(function () {
     //DONE
+
+    Route::get('/status1', function () {
+        return 'test' ;
+    });
+
 Route::prefix('useradmin')->group(function(){
     Route::get('/', [UseradminController::class,'index']);
     Route::get('/detail/{id}', [UseradminController::class,'show']);
