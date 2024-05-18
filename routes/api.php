@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\BarangController;
-use App\Http\Controllers\Api\BarangkeluarController;
-use App\Http\Controllers\Api\BarangmasukController;
+use App\Http\Controllers\Api\BarangKeluarController;
+use App\Http\Controllers\Api\BarangMasukController;
 use App\Http\Controllers\Api\CustomerController;
-use App\Http\Controllers\Api\DetailBarangkeluarController;
-use App\Http\Controllers\Api\DetailBarangmasukController;
+use App\Http\Controllers\Api\DetailBarangKeluarController;
+use App\Http\Controllers\Api\DetailBarangMasukController;
 use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\UseradminController;
