@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('username_user');
             $table->string('password_user');
             $table->string('nama_user');
-            $table->enum('jabatan_user',['P','J','G'])->default('G');
+            $table->enum('jabatan_user',['P','J','G']);
             $table->timestamps();
         });
     }
