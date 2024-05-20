@@ -108,7 +108,6 @@ class UseradminController extends Controller
                 ], Response::HTTP_NOT_FOUND);
             }
             if (password_verify($password, $useradmin->password_user)) {
-                print($useradmin->jabatan_user);
                  if($useradmin->jabatan_user =='P'){
                     $token = $useradmin->createToken('Sinar Matahari Prima', ['read-barang','read-barangkeluar','read-detailbarangkeluar'])->plainTextToken;
                  }
