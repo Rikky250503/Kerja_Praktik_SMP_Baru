@@ -125,7 +125,7 @@ class UseradminController extends Controller
                 ], Response::HTTP_OK);
             } else {
                 return response()->json([
-                    'error' => 'Password yang Anda masukkan salah'
+                    'message' => 'Password yang Anda masukkan salah'
                 ], Response::HTTP_UNAUTHORIZED);
             }
         } catch (\Exception $e) {
