@@ -164,7 +164,7 @@ class BarangKeluarController extends Controller
 
     public function tampilList(Request $request)
     {
-        $data['barangkeluar']= DB::select('SELECT tbl_barangkeluar.id_barang_keluar,tbl_barangkeluar.nomor_invoice_keluar, tbl_customer.nama_pemesan, tbl_barangkeluar.tanggal_keluar, tbl_status.nama_status FROM tbl_barangkeluar JOIN tbl_status ON tbl_barangkeluar.id_status = tbl_status.id_status JOIN tbl_customer ON tbl_barangkeluar.id_customer = tbl_customer.id_customer ORDER BY tbl_barangkeluar.created_at DESC');
+        $data['barangkeluar']= DB::select('SELECT tbl_barangkeluar.id_barang_keluar,tbl_barangkeluar.nomor_invoice_keluar, tbl_customer.nama_pemesan, left(tbl_barangkeluar.tanggal_keluar,10) as tanggal_keluar, tbl_status.nama_status FROM tbl_barangkeluar JOIN tbl_status ON tbl_barangkeluar.id_status = tbl_status.id_status JOIN tbl_customer ON tbl_barangkeluar.id_customer = tbl_customer.id_customer ORDER BY tbl_barangkeluar.created_at DESC');
         try {
             if (!$data['barangkeluar']) {
                 return response()->json([
