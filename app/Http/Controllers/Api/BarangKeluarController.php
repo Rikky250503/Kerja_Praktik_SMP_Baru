@@ -45,7 +45,6 @@ class BarangKeluarController extends Controller
         $validasi = Validator::make(
             $request->all(),
             [
-                "tanggal_keluar" => "required|String",
                 "nomor_invoice_keluar" => "required|String",
                 "id_customer" => "required|String",
                 "created_by" =>"",

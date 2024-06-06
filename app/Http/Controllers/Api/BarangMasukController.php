@@ -45,7 +45,6 @@ class BarangMasukController extends Controller
         $validasi = Validator::make(
             $request->all(),
             [
-                "tanggal_masuk" => "required|String",
                 "nomor_invoice_masuk" => "required|String",
                 "total" => "required|Numeric",
                 "id_supplier"=> "required|String",
@@ -164,5 +163,29 @@ class BarangMasukController extends Controller
             'status' => true,
             'message'=>'Sukses melakukan delete data'
         ]);
+    }
+    public function tampilList(Request $request)
+    {
+        $data['barangkeluar']= DB::select('SELECT tbl_barangkeluar.id_barang_keluar,tbl_barangkeluar.nomor_invoice_keluar, tbl_customer.nama_pemesan, tbl_barangkeluar.tanggal_keluar, tbl_status.nama_status FROM tbl_barangkeluar JOIN tbl_status ON tbl_barangkeluar.id_status = tbl_status.id_status JOIN tbl_customer ON tbl_barangkeluar.id_customer = tbl_customer.id_customer ORDER BY tbl_barangkeluar.created_at DESC');
+        try {
+            if (!$data['barangkeluar']) {
+                return response()->json([
+                    "message" => "Data list barang k eluar tidak ditemukan"
+                ], Response::HTTP_NOT_FOUND);
+            } else {
+                // // Panggil controller kedua dan kirimkan data barang keluar
+                // $detailController = new DetailBarangKeluarController();
+                // $detailController->store($data['barangkeluar']);
+                return response()->json([
+                    "message" => "Data barang keluar berhasil diperbarui",
+                    "data" => $data['barangkeluar']
+                ]);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => "Data barang keluar gagal diperbarui",
+                "error" => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 }
