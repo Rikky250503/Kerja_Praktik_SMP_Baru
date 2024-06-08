@@ -169,9 +169,9 @@ class BarangMasukController extends Controller
         $data['barangmasuk']= DB::select('SELECT tbl_barangmasuk.id_barang_masuk,tbl_barangmasuk.nomor_invoice_masuk,tbl_supplier.nama_supplier
         ,LEFT(tbl_barangmasuk.tanggal_masuk,10)as tanggal_masuk FROM tbl_barangmasuk JOIN tbl_supplier ON tbl_supplier.id_supplier = tbl_barangmasuk.id_supplier ORDER BY tbl_barangmasuk.created_by DESC');
         try {
-            if (!$data['barangkeluar']) {
+            if (!$data['barangmasuk']) {
                 return response()->json([
-                    "message" => "Data list barang k eluar tidak ditemukan"
+                    "message" => "Data list barang masuk tidak ditemukan"
                 ], Response::HTTP_NOT_FOUND);
             } else {
                 // // Panggil controller kedua dan kirimkan data barang keluar
