@@ -46,7 +46,6 @@ class BarangMasukController extends Controller
             $request->all(),
             [
                 "nomor_invoice_masuk" => "required|String",
-                "total" => "required|Numeric",
                 "id_supplier"=> "required|String",
                 //"created_by" =>"required|String", //bikin otomatis
             ]
