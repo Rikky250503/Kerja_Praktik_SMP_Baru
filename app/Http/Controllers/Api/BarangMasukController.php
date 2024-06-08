@@ -166,7 +166,8 @@ class BarangMasukController extends Controller
     }
     public function tampilList(Request $request)
     {
-        $data['barangkeluar']= DB::select('SELECT tbl_barangkeluar.id_barang_keluar,tbl_barangkeluar.nomor_invoice_keluar, tbl_customer.nama_pemesan, tbl_barangkeluar.tanggal_keluar, tbl_status.nama_status FROM tbl_barangkeluar JOIN tbl_status ON tbl_barangkeluar.id_status = tbl_status.id_status JOIN tbl_customer ON tbl_barangkeluar.id_customer = tbl_customer.id_customer ORDER BY tbl_barangkeluar.created_at DESC');
+        $data['barangmasuk']= DB::select('SELECT tbl_barangmasuk.id_barang_masuk,tbl_barangmasuk.nomor_invoice_masuk,tbl_supplier.nama_supplier
+        ,LEFT(tbl_barangmasuk.tanggal_masuk,10)as tanggal_masuk FROM tbl_barangmasuk JOIN tbl_supplier ON tbl_supplier.id_supplier = tbl_barangmasuk.id_supplier ORDER BY tbl_barangmasuk.created_by DESC');
         try {
             if (!$data['barangkeluar']) {
                 return response()->json([
@@ -178,7 +179,7 @@ class BarangMasukController extends Controller
                 // $detailController->store($data['barangkeluar']);
                 return response()->json([
                     "message" => "Data barang keluar berhasil diperbarui",
-                    "data" => $data['barangkeluar']
+                    "data" => $data['barangmasuk']
                 ]);
             }
         } catch (\Exception $e) {

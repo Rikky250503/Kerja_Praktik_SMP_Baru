@@ -167,6 +167,7 @@ Route::prefix('barang')->group(function(){
         Route::get('/', [BarangmasukController::class,'index']);
         Route::post('/daftar', [BarangmasukController::class,'store']);
         Route::get('/detail/{id_barang_masuk}', [BarangmasukController::class,'show']);
+        Route::get('/list', [BarangmasukController::class,'tampilList']);
         Route::put('/update/{id}', [BarangmasukController::class,'update']);
         Route::delete('/delete/{id_barang_masuk}', [BarangmasukController::class,'destroy']);
     });
@@ -177,6 +178,7 @@ Route::prefix('detailbarangmasuk')->group(function(){
     Route::get('/detail/{id_detail_barang_masuk}', [DetailBarangmasukController::class,'show']);
     Route::put('/update/{id}', [DetailBarangmasukController::class,'update']);
     Route::delete('/delete/{id_detail_barang_masuk}', [DetailBarangmasukController::class,'destroy']);
+    Route::post('/detail/{id}', [DetailBarangmasukController::class,'tampilDetail']);
 });
 //Done
 Route::prefix('barangkeluar')->group(function(){

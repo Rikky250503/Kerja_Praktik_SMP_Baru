@@ -261,4 +261,26 @@ class DetailBarangMasukController extends Controller
             'message'=>'Sukses melakukan delete data'
         ]);
     }
+
+    public function tampilDetail(String $id)
+    {
+        $data['detailbarang'] = DB::select('SELECT tbl_supplier.nama_supplier ,tbl_supplier.alamat,tbl_barangmasuk.tanggal_masuk ,tbl_barang.nama_barang ,tbl_detail_barang_masuk.kuantitas,tbl_detail_barang_masuk.harga_satuan FROM tbl_detail_barang_masuk JOIN tbl_barangmasuk ON tbl_detail_barang_masuk.id_barang_masuk = tbl_barangmasuk.id_barang_masuk JOIN tbl_barang ON tbl_detail_barang_masuk.id_barang = tbl_barang.id_barang JOIN tbl_supplier ON tbl_supplier.id_supplier = tbl_barangmasuk.id_supplier WHERE tbl_barangmasuk.id_barang_masuk = :id',['id'=> $id]);
+        try {
+            if (!$data) {
+                return response()->json([
+                    "message" => "Data detail barang keluar tidak ditemukan"
+                ], Response::HTTP_NOT_FOUND);
+            }
+            else{
+                return response()->json([
+                    "message" => "Data detail barang keluar berhasil ditemukan",
+                    "data" => $data
+                ], Response::HTTP_OK);
+            }
+        } catch (\Exception $error) {
+            return response()->json([
+                "message" => "Terjadi kesalahan: " . $error->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
