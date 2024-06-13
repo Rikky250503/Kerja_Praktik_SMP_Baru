@@ -160,7 +160,7 @@ class BarangKeluarController extends Controller
             'message'=>'Sukses melakukan delete data'
         ]);
     }
-    //api group by berdasarkan no hp
+    //api group by by tanggal
 
     public function tampilList($tanggal = null)
     {
