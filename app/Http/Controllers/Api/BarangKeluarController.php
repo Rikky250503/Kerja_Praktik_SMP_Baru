@@ -174,7 +174,7 @@ class BarangKeluarController extends Controller
         try {
             if (!$data['barangkeluar']) {
                 return response()->json([
-                    "message" => "Data list barang keluar tidak ditemukan"
+                    "message" => "Data list barang keluar tidak ditemukan".$tanggal 
                 ], Response::HTTP_NOT_FOUND);
             } else {
                 // // Panggil controller kedua dan kirimkan data barang keluar
