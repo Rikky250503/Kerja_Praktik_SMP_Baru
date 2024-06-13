@@ -185,7 +185,7 @@ Route::prefix('barangkeluar')->group(function(){
     Route::get('/', [BarangkeluarController::class,'index']);
     Route::post('/daftar', [BarangkeluarController::class,'store']);
     Route::get('/detail/{id_barang_keluar}', [BarangkeluarController::class,'show']);
-    Route::get('/list/{tanggal}', [BarangkeluarController::class,'tampilList']);
+    Route::get('/list/{tanggal?}', [BarangkeluarController::class,'tampilList']);
     Route::put('/update/{id}', [BarangkeluarController::class,'update']);
     Route::delete('/delete/{id_barang_keluar}', [BarangkeluarController::class,'destroy']);
 });
