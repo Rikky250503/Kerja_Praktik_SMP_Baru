@@ -166,7 +166,7 @@ class BarangMasukController extends Controller
     public function tampilList(Request $request)
     {
         $data['barangmasuk']= DB::select('SELECT tbl_barangmasuk.id_barang_masuk,tbl_barangmasuk.nomor_invoice_masuk,tbl_supplier.nama_supplier
-        ,LEFT(tbl_barangmasuk.tanggal_masuk,10)as tanggal_masuk FROM tbl_barangmasuk JOIN tbl_supplier ON tbl_supplier.id_supplier = tbl_barangmasuk.id_supplier ORDER BY tbl_barangmasuk.created_by DESC');
+        ,LEFT(tbl_barangmasuk.tanggal_masuk,10)as tanggal_masuk FROM tbl_barangmasuk JOIN tbl_supplier ON tbl_supplier.id_supplier = tbl_barangmasuk.id_supplier ORDER BY tbl_barangmasuk.created_at DESC');
         try {
             if (!$data['barangmasuk']) {
                 return response()->json([
