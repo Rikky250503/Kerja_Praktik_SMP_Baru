@@ -264,7 +264,13 @@ class DetailBarangMasukController extends Controller
 
     public function tampilDetail(String $id)
     {
-        $data['detailbarang'] = DB::select('SELECT tbl_supplier.nama_supplier ,tbl_supplier.alamat,tbl_barangmasuk.tanggal_masuk ,tbl_barang.nama_barang ,tbl_detail_barang_masuk.kuantitas,tbl_detail_barang_masuk.harga_satuan FROM tbl_detail_barang_masuk JOIN tbl_barangmasuk ON tbl_detail_barang_masuk.id_barang_masuk = tbl_barangmasuk.id_barang_masuk JOIN tbl_barang ON tbl_detail_barang_masuk.id_barang = tbl_barang.id_barang JOIN tbl_supplier ON tbl_supplier.id_supplier = tbl_barangmasuk.id_supplier WHERE tbl_barangmasuk.id_barang_masuk = :id',['id'=> $id]);
+        $data['detailbarang'] = DB::select
+        ('SELECT tbl_supplier.nama_supplier ,tbl_supplier.alamat,tbl_barangmasuk.tanggal_masuk ,tbl_barang.nama_barang ,tbl_detail_barang_masuk.kuantitas,tbl_detail_barang_masuk.harga_satuan 
+        FROM tbl_detail_barang_masuk 
+        JOIN tbl_barangmasuk ON tbl_detail_barang_masuk.id_barang_masuk = tbl_barangmasuk.id_barang_masuk 
+        JOIN tbl_barang ON tbl_detail_barang_masuk.id_barang = tbl_barang.id_barang 
+        JOIN tbl_supplier ON tbl_supplier.id_supplier = tbl_barangmasuk.id_supplier 
+        WHERE tbl_barangmasuk.id_barang_masuk = :id',['id'=> $id]);
         try {
             if (!$data) {
                 return response()->json([
