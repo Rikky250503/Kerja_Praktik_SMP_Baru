@@ -374,7 +374,7 @@ class DetailBarangKeluarController extends Controller
     public function tampilDetail(String $id)
     {
         $data['detailbarang'] = DB::select
-        ('SELECT tbl_customer.nama_pemesan ,tbl_customer.alamat_pemesan ,tbl_barangkeluar.tanggal_keluar ,tbl_status.nama_status ,tbl_barang.nama_barang ,tbl_detail_barang_keluar.kuantitas,tbl_detail_barang_keluar.harga_barang_keluar 
+        ('SELECT tbl_customer.nama_pemesan ,tbl_customer.alamat_pemesan ,Left(tbl_barangkeluar.tanggal_keluar,10) as tanggal_keluar ,tbl_status.nama_status ,tbl_barang.nama_barang ,tbl_detail_barang_keluar.kuantitas,tbl_detail_barang_keluar.harga_barang_keluar 
         FROM tbl_detail_barang_keluar 
         JOIN tbl_barangkeluar ON tbl_detail_barang_keluar.id_barang_keluar = tbl_barangkeluar.id_barang_keluar 
         JOIN tbl_status ON tbl_status.id_status = tbl_barangkeluar.id_status 
