@@ -95,7 +95,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('barangkeluar')->group(function(){
         Route::middleware(['auth:sanctum','abilities:read-barangkeluar'])->get('/',[BarangkeluarController::class,'index']);
         Route::middleware(['auth:sanctum','abilities:add-barangkeluar'])->post('/daftar',[BarangkeluarController::class,'store']);
-        Route::middleware(['abilities:read-barangkeluar'])->get('/list/{tanggal?}', [BarangkeluarController::class,'tampilList']);
+        Route::middleware(['auth:sanctum','abilities:read-barangkeluar'])->get('/list/{tanggal?}', [BarangkeluarController::class,'tampilList']);
         Route::middleware(['auth:sanctum','abilities:read-barangkeluar'])->get('/detail/{id_barang_keluar}',[BarangkeluarController::class,'show']);
         Route::middleware(['auth:sanctum', 'abilities:update-barangkeluar'])->put('/update/{id}', [BarangkeluarController::class,'update']);
         Route::delete('/delete/{id_barang_keluar}', [BarangkeluarController::class,'destroy']);
