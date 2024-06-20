@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('useradmin/daftar', [UseradminController::class,'store']);
 Route::post('useradmin/login', [UseradminController::class,'login']);
 //ini yang ada abilities
-/*
+
 Route::middleware('auth:sanctum')->group(function () {
     //DONE
     Route::prefix('useradmin')->group(function(){
@@ -77,6 +77,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('barangmasuk')->group(function(){
         Route::middleware(['auth:sanctum', 'abilities:read-barangmasuk'])->get('/', [BarangmasukController::class, 'index']);
         Route::middleware(['auth:sanctum', 'abilities:add-barangmasuk'])->post('/daftar', [BarangmasukController::class, 'store']);
+        Route::middleware(['auth:sanctum','abilities:read-barangmasuk'])->get('/list', [BarangmasukController::class,'tampilList']);
         Route::middleware(['auth:sanctum', 'abilities:read-barangmasuk'])->get('/detail/{id_barang_masuk}', [BarangmasukController::class, 'show']);
         Route::middleware(['auth:sanctum', 'abilities:update-barangmasuk'])->put('/update/{id}', [BarangmasukController::class, 'update']);
         Route::delete('/delete/{id_barang_masuk}', [BarangmasukController::class,'destroy']);
@@ -85,6 +86,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('detailbarangmasuk')->group(function(){
         Route::middleware(['auth:sanctum', 'abilities:read-detailbarangmasuk'])->get('/', [DetailBarangmasukController::class, 'index']);
         Route::middleware(['auth:sanctum', 'abilities:add-detailbarangmasuk'])->post('/daftar', [DetailBarangmasukController::class, 'store']);
+        Route::middleware(['auth:sanctum','abilities:read-detailbarangmasuk'])->post('/detail/{id}', [DetailBarangmasukController::class,'tampilDetail']);
         Route::middleware(['auth:sanctum', 'abilities:read-detailbarangmasuk'])->get('/detail/{id_detail_barang_masuk}', [DetailBarangmasukController::class, 'show']);
         Route::middleware(['auth:sanctum', 'abilities:update-detailbarangmasuk'])->put('/update/{id}', [DetailBarangmasukController::class, 'update']);
         Route::delete('/delete/{id_detail_barang_masuk}', [DetailBarangmasukController::class,'destroy']);
@@ -93,6 +95,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('barangkeluar')->group(function(){
         Route::middleware(['auth:sanctum','abilities:read-barangkeluar'])->get('/',[BarangkeluarController::class,'index']);
         Route::middleware(['auth:sanctum','abilities:add-barangkeluar'])->post('/daftar',[BarangkeluarController::class,'store']);
+        Route::middleware(['auth:sanctum','abilities:read-barangkeluar'])->get('/list/{tanggal?}', [BarangkeluarController::class,'tampilList']);
         Route::middleware(['auth:sanctum','abilities:read-barangkeluar'])->get('/detail/{id_barang_keluar}',[BarangkeluarController::class,'show']);
         Route::middleware(['auth:sanctum', 'abilities:update-barangkeluar'])->put('/update/{id}', [BarangkeluarController::class,'update']);
         Route::delete('/delete/{id_barang_keluar}', [BarangkeluarController::class,'destroy']);
@@ -100,6 +103,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('detailbarangkeluar')->group(function(){
         Route::middleware(['auth:sanctum','abilities:read-detailbarangkeluar'])->get('/', [DetailBarangkeluarController::class,'index']);
         Route::middleware(['auth:sanctum','abilities:add-detailbarangkeluar'])->post('/daftar', [DetailBarangkeluarController::class,'store']);
+        Route::middleware(['auth:sanctum','abilities:read-detailbarangkeluar'])->post('/detail/{id}', [DetailBarangkeluarController::class,'tampilDetail']);
         Route::middleware(['auth:sanctum','abilities:read-detailbarangkeluar'])->get('/detail/{id_detail_barang_keluar}', [DetailBarangkeluarController::class,'show']);
         Route::middleware(['auth:sanctum', 'abilities:update-detailbarangkeluar'])->put('/update/{id}',[DetailBarangkeluarController::class,'update']);
         Route::delete('/delete/{id_detail_barang_keluar}', [DetailBarangkeluarController::class,'destroy']);
@@ -112,13 +116,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('/delete/{id}', [CustomerController::class,'destroy']);
     });
 });
-*/
+
 
 //ini yang buat tester
 
 //Route::middleware('auth:sanctum')->group(function () {
     //DONE
-
+/*
     Route::get('/status1', function () {
         return 'test' ;
     });
@@ -208,3 +212,4 @@ Route::prefix('customer')->group(function(){
 });
 
 //});
+*/
