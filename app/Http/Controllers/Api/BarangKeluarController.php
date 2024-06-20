@@ -189,13 +189,13 @@ class BarangKeluarController extends Controller
                 ], Response::HTTP_NOT_FOUND);
             } else {
                 return response()->json([
-                    "message" => "Data barang keluar berhasil diperbarui",
+                    "message" => "Data barang keluar berhasil ditemukan",
                     "data" => $data['barangkeluar']
                 ]);
             }
         } catch (\Exception $e) {
             return response()->json([
-                "message" => "Data barang keluar gagal diperbarui",
+                "message" => "Data barang keluar gagal ditemukan",
                 "error" => $e->getMessage()
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
