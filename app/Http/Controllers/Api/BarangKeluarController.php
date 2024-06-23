@@ -62,7 +62,7 @@ class BarangKeluarController extends Controller
                 $bikinbarangkeluar = Barangkeluar::create($validated);
                 DB::commit();
                 return response()->json([
-                    "message" => "Berhasil menginput data barang keluar",
+                    "message" => "Berhasil diinput",
                     "data" => $bikinbarangkeluar
                 ]);
             } catch (\Exception $e) {
@@ -175,7 +175,7 @@ class BarangKeluarController extends Controller
         }
         else{
             $data['barangkeluar']= DB::select
-            ("SELECT tbl_barangkeluar.id_barang_keluar,tbl_detail_barang_keluar.id_detail_barang_keluar,tbl_customer.nama_pemesan,tbl_barang.nama_barang,LEFT(tbl_barangkeluar.tanggal_keluar,10) AS tanggal_keluar 
+            ("SELECT tbl_barangkeluar.id_barang_keluar,tbl_detail_barang_keluar.id_detail_barang_keluar,tbl_customer.nama_pemesan,tbl_barang.nama_barang,tbl_detail_barang_keluar.kuantitas,LEFT(tbl_barangkeluar.tanggal_keluar,10) AS tanggal_keluar 
             FROM tbl_detail_barang_keluar 
             JOIN tbl_barangkeluar ON tbl_detail_barang_keluar.id_barang_keluar = tbl_barangkeluar.id_barang_keluar JOIN tbl_customer ON tbl_customer.id_customer = tbl_barangkeluar.id_customer 
             JOIN tbl_barang ON tbl_detail_barang_keluar.id_barang = tbl_barang.id_barang  

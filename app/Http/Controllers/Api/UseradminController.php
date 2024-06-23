@@ -125,7 +125,7 @@ class UseradminController extends Controller
                 ], Response::HTTP_OK);
             } else {
                 return response()->json([
-                    'message' => 'Password yang Anda masukkan salah'
+                    'message' => 'Username atau Password yang Anda masukkan salah'
                 ], Response::HTTP_UNAUTHORIZED);
             }
         } catch (\Exception $e) {
@@ -134,9 +134,7 @@ class UseradminController extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         DB::beginTransaction();
@@ -180,10 +178,6 @@ class UseradminController extends Controller
             }
         }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id_user)
     {
         $data_user = Useradmin::find($id_user);

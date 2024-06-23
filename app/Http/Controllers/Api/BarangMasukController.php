@@ -62,7 +62,7 @@ class BarangMasukController extends Controller
                 $bikinbarangmasuk = Barangmasuk::create($validated);
                 DB::commit();
                 return response()->json([
-                    "message" => "Berhasil menginput data barang masuk",
+                    "message" => "Berhasil diinput",
                     "data" => $bikinbarangmasuk
                 ]);
             } catch (\Exception $e) {
@@ -177,9 +177,6 @@ class BarangMasukController extends Controller
                     "message" => "Data list barang masuk tidak ditemukan"
                 ], Response::HTTP_NOT_FOUND);
             } else {
-                // // Panggil controller kedua dan kirimkan data barang keluar
-                // $detailController = new DetailBarangKeluarController();
-                // $detailController->store($data['barangkeluar']);
                 return response()->json([
                     "message" => "Data barang keluar berhasil diperbarui",
                     "data" => $data['barangmasuk']
