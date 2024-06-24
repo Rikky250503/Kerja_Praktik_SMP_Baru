@@ -13,25 +13,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\StatusController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
- Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-     return $request->user();
-    
- });
 
 Route::post('useradmin/daftar', [UseradminController::class,'store']);
 Route::post('useradmin/login', [UseradminController::class,'login']);
-//ini yang ada abilities
 
 Route::middleware('auth:sanctum')->group(function () {
     //DONE
@@ -108,6 +92,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::middleware(['auth:sanctum', 'abilities:update-detailbarangkeluar'])->put('/update/{id}',[DetailBarangkeluarController::class,'update']);
         Route::delete('/delete/{id_detail_barang_keluar}', [DetailBarangkeluarController::class,'destroy']);
     });
+
+
+
+
     Route::prefix('customer')->group(function(){
         Route::middleware(['auth:sanctum','abilities:read-customer'])->get('/', [CustomerController::class,'index']);
         Route::middleware(['auth:sanctum','abilities:add-customer'])->post('/daftar', [CustomerController::class,'store']);

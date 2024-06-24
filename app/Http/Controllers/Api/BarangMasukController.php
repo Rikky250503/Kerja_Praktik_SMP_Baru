@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class BarangMasukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         try
@@ -35,9 +32,6 @@ class BarangMasukController extends Controller
             ],Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -46,11 +40,9 @@ class BarangMasukController extends Controller
             $request->all(),
             [
                 "nomor_invoice_masuk" => "required|String",
-                "id_supplier"=> "required|String",
-                //"created_by" =>"required|String", //bikin otomatis
+                "id_supplier"=> "required|String"
             ]
         );
-
         if ($validasi->fails()) {
             return response()->json([
                 "message" => "Gagal menginput data barang masuk",
@@ -75,9 +67,6 @@ class BarangMasukController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id_barang_masuk)
     {
         try {
@@ -95,9 +84,6 @@ class BarangMasukController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         DB::beginTransaction();
@@ -142,9 +128,6 @@ class BarangMasukController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id_barang_masuk)
     {
         $data_barang_masuk = Barangmasuk::find($id_barang_masuk);
@@ -163,6 +146,7 @@ class BarangMasukController extends Controller
             'message'=>'Sukses melakukan delete data'
         ]);
     }
+
     public function tampilList(Request $request)
     {
         $data['barangmasuk']= DB::select

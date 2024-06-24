@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class DetailBarangMasukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         try
@@ -37,9 +35,6 @@ class DetailBarangMasukController extends Controller
             ],Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $Validator = Validator::make(
@@ -108,9 +103,6 @@ class DetailBarangMasukController extends Controller
         }   
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id_detail_barang_masuk)
     {
         try {
@@ -127,9 +119,6 @@ class DetailBarangMasukController extends Controller
             ]);
         }
     }
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         DB::beginTransaction();
@@ -240,9 +229,6 @@ class DetailBarangMasukController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id_detail_barang_masuk)
     {
         $data_detail_barang_masuk = DetailBarangMasuk::find($id_detail_barang_masuk);
@@ -265,7 +251,8 @@ class DetailBarangMasukController extends Controller
     public function tampilDetail(String $id)
     {
         $data = DB::select
-        ('SELECT tbl_supplier.nama_supplier ,tbl_supplier.alamat,tbl_barangmasuk.tanggal_masuk ,tbl_barang.nama_barang ,tbl_detail_barang_masuk.kuantitas,tbl_detail_barang_masuk.harga_satuan 
+        ('SELECT tbl_supplier.nama_supplier ,tbl_supplier.alamat,tbl_barangmasuk.tanggal_masuk ,
+        tbl_barang.nama_barang ,tbl_detail_barang_masuk.kuantitas,tbl_detail_barang_masuk.harga_satuan 
         FROM tbl_detail_barang_masuk 
         JOIN tbl_barangmasuk ON tbl_detail_barang_masuk.id_barang_masuk = tbl_barangmasuk.id_barang_masuk 
         JOIN tbl_barang ON tbl_detail_barang_masuk.id_barang = tbl_barang.id_barang 

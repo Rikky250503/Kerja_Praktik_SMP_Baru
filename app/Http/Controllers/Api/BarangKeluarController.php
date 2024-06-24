@@ -167,7 +167,7 @@ class BarangKeluarController extends Controller
         if($tanggal == null)
         {
             $data['barangkeluar']= DB::select
-            ('SELECT tbl_barangkeluar.id_barang_keluar,tbl_barangkeluar.nomor_invoice_keluar, tbl_customer.nama_pemesan, left(tbl_barangkeluar.tanggal_keluar,10) as tanggal_keluar, tbl_status.nama_status 
+            ('SELECT tbl_barangkeluar.id_barang_keluar,tbl_barangkeluar.nomor_invoice_keluar,  tbl_customer.nama_pemesan, left(tbl_barangkeluar.tanggal_keluar,10) as tanggal_keluar, substring(tbl_barangkeluar.tanggal_keluar, 12, 5) as jam , tbl_status.nama_status 
             FROM tbl_barangkeluar 
             JOIN tbl_status ON tbl_barangkeluar.id_status = tbl_status.id_status 
             JOIN tbl_customer ON tbl_barangkeluar.id_customer = tbl_customer.id_customer 
@@ -175,10 +175,10 @@ class BarangKeluarController extends Controller
         }
         else{
             $data['barangkeluar']= DB::select
-            ("SELECT tbl_barangkeluar.id_barang_keluar,tbl_detail_barang_keluar.id_detail_barang_keluar,tbl_customer.nama_pemesan,tbl_barang.nama_barang,tbl_detail_barang_keluar.kuantitas,LEFT(tbl_barangkeluar.tanggal_keluar,10) AS tanggal_keluar 
-            FROM tbl_detail_barang_keluar 
-            JOIN tbl_barangkeluar ON tbl_detail_barang_keluar.id_barang_keluar = tbl_barangkeluar.id_barang_keluar JOIN tbl_customer ON tbl_customer.id_customer = tbl_barangkeluar.id_customer 
-            JOIN tbl_barang ON tbl_detail_barang_keluar.id_barang = tbl_barang.id_barang  
+            ("SELECT tbl_barangkeluar.id_barang_keluar,tbl_barangkeluar.nomor_invoice_keluar,  tbl_customer.nama_pemesan, left(tbl_barangkeluar.tanggal_keluar,10) as tanggal_keluar, substring(tbl_barangkeluar.tanggal_keluar, 12, 5) as jam , tbl_status.nama_status 
+            FROM tbl_barangkeluar 
+            JOIN tbl_status ON tbl_barangkeluar.id_status = tbl_status.id_status 
+            JOIN tbl_customer ON tbl_barangkeluar.id_customer = tbl_customer.id_customer 
             WHERE LEFT(tbl_barangkeluar.tanggal_keluar,10) = '$tanggal'
             ORDER BY tbl_barangkeluar.created_at DESC");
         }
