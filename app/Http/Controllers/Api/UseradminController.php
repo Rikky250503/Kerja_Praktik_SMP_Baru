@@ -111,7 +111,7 @@ class UseradminController extends Controller
                 if($useradmin->status == 'aktif')
                 {
                     if($useradmin->jabatan_user =='P'){
-                       $token = $useradmin->createToken('Sinar Matahari Prima', ['read-useradmin','update_useradmin'])->plainTextToken;
+                       $token = $useradmin->createToken('Sinar Matahari Prima', ['read-useradmin','update-useradmin'])->plainTextToken;
                     }
                     else if($useradmin->jabatan_user == 'J'){
                         $token = $useradmin->createToken('Sinar Matahari Prima', ['read-barang','add-barangmasuk','read-barangmasuk','update-barangmasuk','read-detailbarangmasuk','add-detailbarangmasuk','update-detailbarangmasuk','add-supplier','read-supplier','add-customer','read-customer','read-barangkeluar','add-barangkeluar','update-barangkeluar','read-detailbarangkeluar','add-detailbarangkeluar','update-detailbarangkeluar'])->plainTextToken;
