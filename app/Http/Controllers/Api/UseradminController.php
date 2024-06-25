@@ -149,10 +149,6 @@ class UseradminController extends Controller
         $Validator = Validator::make(
             $request->all(),
             [
-                // 'username_user' => 'String',
-                // 'password_user' => 'String',
-                // 'nama_user' => 'String',
-                // 'jabatan_user'=>'String',
                 'status'=>'String'
             ]
         );
@@ -163,7 +159,6 @@ class UseradminController extends Controller
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         } else {
             $Validated = $Validator->validated();
-            //$Validated["password_user"] = bcrypt($Validated["password_user"]);
             
             try {
                 $useradmin = Useradmin::findOrFail($id);
