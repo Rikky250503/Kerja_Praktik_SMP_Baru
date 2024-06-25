@@ -20,9 +20,9 @@ Route::post('useradmin/login', [UseradminController::class,'login']);
 Route::middleware('auth:sanctum')->group(function () {
     //DONE
     Route::prefix('useradmin')->group(function(){
-        Route::get('/', [UseradminController::class,'index']);
-        Route::get('/detail/{id}', [UseradminController::class,'show']);
-        Route::put('/update/{id}', [UseradminController::class,'update']);
+        Route::middleware(['auth:sanctum','abilities:read-useradmin'])->get('/', [UseradminController::class,'index']);
+        Route::middleware(['auth:sanctum','abilities:read-useradmin'])->get('/detail/{id}', [UseradminController::class,'show']);
+        Route::middleware(['auth:sanctum','abilities:update-useradmin'])->put('/update/{id}', [UseradminController::class,'update']);
         Route::delete('/delete/{id_user}', [UseradminController::class,'destroy']);
     });
     //DONE

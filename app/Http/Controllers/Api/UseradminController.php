@@ -108,21 +108,29 @@ class UseradminController extends Controller
                 ], Response::HTTP_NOT_FOUND);
             }
             if (password_verify($password, $useradmin->password_user)) {
-                 if($useradmin->jabatan_user =='P'){
-                    $token = $useradmin->createToken('Sinar Matahari Prima', ['read-barang','read-barangkeluar','read-detailbarangkeluar'])->plainTextToken;
-                 }
-                 else if($useradmin->jabatan_user == 'J'){
-                     $token = $useradmin->createToken('Sinar Matahari Prima', ['read-barang','add-barangmasuk','read-barangmasuk','update-barangmasuk','read-detailbarangmasuk','add-detailbarangmasuk','update-detailbarangmasuk','add-supplier','read-supplier','add-customer','read-customer','read-barangkeluar','add-barangkeluar','update-barangkeluar','read-detailbarangkeluar','add-detailbarangkeluar','update-detailbarangkeluar'])->plainTextToken;
-                 }
-                 else if($useradmin->jabatan_user == 'G'){
-                    $token = $useradmin->createToken('Sinar Matahari Prima', ['read-barang','read-barangmasuk','read-barangkeluar','read-detailbarangkeluar','update-barangkeluar'])->plainTextToken;
+                if($useradmin->status == 'aktif')
+                {
+                    if($useradmin->jabatan_user =='P'){
+                       $token = $useradmin->createToken('Sinar Matahari Prima', ['read-useradmin','update_useradmin'])->plainTextToken;
+                    }
+                    else if($useradmin->jabatan_user == 'J'){
+                        $token = $useradmin->createToken('Sinar Matahari Prima', ['read-barang','add-barangmasuk','read-barangmasuk','update-barangmasuk','read-detailbarangmasuk','add-detailbarangmasuk','update-detailbarangmasuk','add-supplier','read-supplier','add-customer','read-customer','read-barangkeluar','add-barangkeluar','update-barangkeluar','read-detailbarangkeluar','add-detailbarangkeluar','update-detailbarangkeluar'])->plainTextToken;
+                    }
+                    else if($useradmin->jabatan_user == 'G'){
+                       $token = $useradmin->createToken('Sinar Matahari Prima', ['read-barang','read-barangmasuk','read-barangkeluar','read-detailbarangkeluar','update-barangkeluar'])->plainTextToken;
+                   }
+                   return response()->json([
+                       'message' => 'Login berhasil',
+                       'data' => $useradmin->id_user,
+                       'jabatan' => $useradmin->jabatan_user,
+                       'token' => $token,
+                   ], Response::HTTP_OK);
+                } 
+                else if($useradmin ->status == 'nonaktif') {
+                    return response()->json([
+                        'message' =>'akun anda sudah tidak aktif lagi'
+                    ],Response::HTTP_INTERNAL_SERVER_ERROR);
                 }
-                return response()->json([
-                    'message' => 'Login berhasil',
-                    'data' => $useradmin->id_user,
-                    'jabatan' => $useradmin->jabatan_user,
-                    'token' => $token,
-                ], Response::HTTP_OK);
             } else {
                 return response()->json([
                     'message' => 'Username atau Password yang Anda masukkan salah'
@@ -144,7 +152,8 @@ class UseradminController extends Controller
                 'username_user' => 'String',
                 'password_user' => 'String',
                 'nama_user' => 'String',
-                'jabatan_user'=>'String'
+                'jabatan_user'=>'String',
+                'status'=>'String'
             ]
         );
         if ($Validator->fails()) {

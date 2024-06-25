@@ -14,7 +14,7 @@ class Useradmin extends Authenticatable
 
     protected $table = 'tbl_useradmin';
     protected $primaryKey = 'id_user';
-    protected $fillable = ['username_user','jabatan_user','nama_user','password_user'];
+    protected $fillable = ['username_user','jabatan_user','nama_user','password_user','status'];
 
     public function barangmasuk(): HasOne
     {
