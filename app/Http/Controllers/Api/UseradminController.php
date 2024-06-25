@@ -149,10 +149,10 @@ class UseradminController extends Controller
         $Validator = Validator::make(
             $request->all(),
             [
-                'username_user' => 'String',
-                'password_user' => 'String',
-                'nama_user' => 'String',
-                'jabatan_user'=>'String',
+                // 'username_user' => 'String',
+                // 'password_user' => 'String',
+                // 'nama_user' => 'String',
+                // 'jabatan_user'=>'String',
                 'status'=>'String'
             ]
         );
