@@ -35,9 +35,6 @@ class SupplierController extends Controller
             ],Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -94,9 +91,7 @@ class SupplierController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         DB::beginTransaction();

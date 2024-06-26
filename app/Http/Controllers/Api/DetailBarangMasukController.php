@@ -89,7 +89,7 @@ class DetailBarangMasukController extends Controller
                 DB::commit();
 
                 return response()->json([
-                    "message" => "Data detail barang masuk berhasil diperbarui",
+                    "message" => "Berhasil Mengingput data Barang",
                     "data" => $detailbarangmasuk
                 ]);
 

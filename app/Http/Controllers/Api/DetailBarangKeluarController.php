@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Validator;
 
 class DetailBarangKeluarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         try
@@ -39,9 +36,6 @@ class DetailBarangKeluarController extends Controller
             ],Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $Validator = Validator::make(
@@ -97,7 +91,7 @@ class DetailBarangKeluarController extends Controller
                 DB::commit();
 
                 return response()->json([
-                    "message" => "Data detail barang keluar berhasil dibuat",
+                    "message" => "Berhasil Menginput Data Barang",
                     "data" => $detailbarangkeluar
                 ]);
             } catch (\Exception $e) {
